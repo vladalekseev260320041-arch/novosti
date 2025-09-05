@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var cards = Array.prototype.slice.call(document.querySelectorAll('.news-card'));
   var hasClientPaging = cards.some(function (c) { return c.hasAttribute('data-page'); });
 
-  // If there are no data-page cards, skip client-side pagination (server-side paging in PHP)
+ 
   if (!hasClientPaging) return;
 
   function setActive(index) {
@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
+  
   numberButtons.forEach(function (btn, idx) {
     btn.addEventListener('click', function (e) {
-      // Предотвращение прокрутки вверх, когда кнопки являются привязками в статической демонстрации
+      
       if (btn.tagName === 'A') e.preventDefault();
       setActive(idx);
     });
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return i === -1 ? 0 : i;
   }
 
-  // стрелка влево убрана
   if (nextBtn) {
     nextBtn.addEventListener('click', function (e) {
       if (nextBtn.tagName === 'A') e.preventDefault();
@@ -51,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // initialize view
   setActive(getActiveIndex());
 });
+
 
 
